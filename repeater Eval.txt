@@ -1,0 +1,87 @@
+<%-- PROFILE DATA--%>
+<div class=" row ProfileData">
+    <div class="col-6">
+        <div>
+            <asp:Label ID="Name" runat="server" Text="Name: " Visible="false"></asp:Label>
+            <asp:Label ID="lblFullName" runat="server" Text='<%#Eval("FullName") %>' Visible="false"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="Sex" runat="server" Text="Sex: " Visible="false"></asp:Label>
+            <asp:Label ID="lblSex" runat="server" Text='<%#Eval("Sex") %>' Visible="false"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="Age" runat="server" Text="Age: " Visible="false"></asp:Label>
+            <asp:Label ID="lblAge" runat="server" Text='<%#Eval("Age") %>' Visible="false"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="Address" runat="server" Text="Address: " Visible="false"></asp:Label>
+            <asp:Label ID="lblAddres" runat="server" Text='<%#Eval("Address") %>' Visible="false"></asp:Label>
+        </div>
+        <div>
+            <asp:Label ID="District" runat="server" Text="District: " Visible="false"></asp:Label>
+            <asp:Label ID="lblDistrict" runat="server" Text='<%#Eval("District") %>' Visible="false"></asp:Label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div>
+            <asp:Label ID="Religion" runat="server" Text="Religion: " Visible="false"></asp:Label>
+            <asp:Label ID="lblReligion" runat="server" Text='<%#Eval("Religion") %>' Visible="false"></asp:Label>
+        </div>
+    </div>
+</div>
+
+ protected void MoreInfo_Click(object sender, EventArgs e)
+ {
+     
+     RepeaterItem repeaterItem = (sender as Button).NamingContainer as RepeaterItem;
+     //Profile
+     (repeaterItem.FindControl("Name") as Label).Visible = true;
+     (repeaterItem.FindControl("lblFullName") as Label).Visible = true;
+     (repeaterItem.FindControl("Sex") as Label).Visible = true;
+     (repeaterItem.FindControl("lblSex") as Label).Visible = true;
+     (repeaterItem.FindControl("Age") as Label).Visible = true;
+     (repeaterItem.FindControl("lblAge") as Label).Visible = true;
+     (repeaterItem.FindControl("Address") as Label).Visible = true;
+     (repeaterItem.FindControl("lblAddres") as Label).Visible = true;
+     (repeaterItem.FindControl("District") as Label).Visible = true;
+     (repeaterItem.FindControl("lblDistrict") as Label).Visible = true;
+     (repeaterItem.FindControl("Religion") as Label).Visible = true;
+     (repeaterItem.FindControl("lblReligion") as Label).Visible = true;
+
+     //Button
+     (repeaterItem.FindControl("btnCollapse") as Button).Visible = true;
+     (repeaterItem.FindControl("btnMoreInfo") as Button).Visible = false;
+
+    
+ }
+
+
+ protected void btnCollapse_Click(object sender, EventArgs e)
+ {
+     RepeaterItem repeaterItem = (sender as Button).NamingContainer as RepeaterItem;
+     //Profile
+     (repeaterItem.FindControl("Name") as Label).Visible = false;
+     (repeaterItem.FindControl("lblFullName") as Label).Visible = false;
+     (repeaterItem.FindControl("Sex") as Label).Visible = false;
+     (repeaterItem.FindControl("lblSex") as Label).Visible = false;
+     (repeaterItem.FindControl("Age") as Label).Visible = false;
+     (repeaterItem.FindControl("lblAge") as Label).Visible = false;
+     (repeaterItem.FindControl("Address") as Label).Visible = false;
+     (repeaterItem.FindControl("lblAddres") as Label).Visible = false;
+     (repeaterItem.FindControl("District") as Label).Visible = false;
+     (repeaterItem.FindControl("lblDistrict") as Label).Visible = false;
+     (repeaterItem.FindControl("Religion") as Label).Visible = false;
+     (repeaterItem.FindControl("lblReligion") as Label).Visible = false;
+
+     //Button
+     (repeaterItem.FindControl("btnMoreInfo") as Button).Visible = true;
+     (repeaterItem.FindControl("btnCollapse") as Button).Visible = false;
+ }
+
+<%--BUTTONS--%>
+<div>
+    <asp:Button ID="btnMoreInfo" runat="server" Text="More Info" OnClick="MoreInfo_Click" Visible="true" />
+</div>
+<div>
+    <asp:Button ID="btnCollapse" runat="server" Text="Collapse" OnClick="btnCollapse_Click" Visible="false" />
+</div>

@@ -1,0 +1,12 @@
+select
+e.BusinessEntityID,
+e.JobTitle,
+e.MaritalStatus,
+edh.StartDate,
+edh.EndDate,
+d.DepartmentID,
+d.Name
+
+from HumanResources.Employee e
+full join HumanResources.EmployeeDepartmentHistory edh on e.BusinessEntityID = edh.BusinessEntityID
+full join HumanResources.Department d on edh.BusinessEntityID = d.DepartmentID

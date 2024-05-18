@@ -1,0 +1,4 @@
+select Categories.CategoryName, Products.ProductName
+from Categories
+full outer join Products on Categories.CategoryId = Products.CategoryId
+order by Categories.CategoryId

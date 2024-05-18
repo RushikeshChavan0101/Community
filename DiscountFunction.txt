@@ -1,0 +1,17 @@
+alter FUNCTION dbo.GetDiscount(@ProductID int)
+RETURNS decimal(10,2)
+AS
+-- Returns the stock level for the product.
+BEGIN
+    DECLARE @TotalDue decimal(10,2);
+    SELECT @TotalDue = TotalDue
+    FROM Sales.SalesOrderHeader s
+    WHERE s.SalesOrderID = @ProductID;
+
+	IF (@TotalDue > 1000) set @TotalDue = @TotalDue * 0.9
+    RETURN @TotalDue;
+END;
+
+SELECT SalesOrderID, TotalDue, dbo.GetDiscount(SalesOrderID)AS Discount
+FROM Sales.SalesOrderHeader
+order by SalesOrderID asc

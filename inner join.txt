@@ -1,0 +1,3 @@
+select ProductId, ProductName, CategoryName
+from Products
+inner join Categories on Products.CategoryId = Categories.CategoryId;
